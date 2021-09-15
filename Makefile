@@ -1,6 +1,6 @@
-CXX = gcc
-CXXFLAGS = -std=c++11 -Wall -g3 -O2 -fopenmp
-EXT = -lstdc++
+CXX = g++
+CXXFLAGS = -I/usr/include/opencv4 -std=c++11 -Wall -g3 -O2 -fopenmp
+EXT = -lm
 
 dir:
 	mkdir -p build dist
