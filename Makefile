@@ -1,5 +1,5 @@
 CXX = gcc
-CXXFLAGS = -std=c++11 -Wall -g3 -O2
+CXXFLAGS = -std=c++11 -Wall -g3 -O2 -fopenmp
 EXT = -lstdc++
 
 dir:
