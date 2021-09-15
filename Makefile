@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -I/usr/include/opencv4 -std=c++11 -Wall -g3 -O2 -fopenmp
-EXT = -lm
+LIBS = -lm -lopencv_core -lopencv_imgcodecs -lopencv_highgui
 
 dir:
 	mkdir -p build dist
