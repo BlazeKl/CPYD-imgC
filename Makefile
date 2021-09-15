@@ -12,6 +12,6 @@ main.o:
 	$(CXX) $(CXXFLAGS) -c src/main.cpp -o build/main.o
 
 compile: clean dir main.o
-	$(CXX) $(CXXFLAGS) -o dist/test build/main.o $(EXT)
+	$(CXX) $(CXXFLAGS) -o dist/test build/main.o $(LIBS)
 
 .DEFAULT_GOAL := compile
