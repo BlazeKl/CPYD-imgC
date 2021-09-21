@@ -2,21 +2,31 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <iostream>
+
 using namespace cv;
-int main()
+
+int main(int argc, char *argv[])
 {
-    std::string image_path = samples::findFile("starry_night.jpg");
-    Mat img = imread(image_path, IMREAD_COLOR);
-    if(img.empty())
+    std::cout << "parametro 1: " << argv[1] << std::endl;
+    std::cout << "parametro 2: " << argv[2] << std::endl;
+    std::string image_path = samples::findFile(argv[1]);
+    if(image_path.empty())
     {
-        std::cout << "Could not read the image: " << image_path << std::endl;
+        std::cout << "Could not read the image" << std::endl;
         return 1;
     }
-    imshow("Display window", img);
-    int k = waitKey(0); // Wait for a keystroke in the window
-    if(k == 's')
+    else
     {
-        imwrite("starry_night.png", img);
+        Mat img_gris = imread(image_path, IMREAD_GRAYSCALE);
+        Mat vacio = Mat::zeros(img_gris.size(), CV_8UC1);
+        std::vector<Mat> canales;
+        canales.push_back(vacio);
+        canales.push_back(vacio);
+        canales.push_back(img_gris);
+
+        Mat img_color;
+        merge(canales, img_color);
+
+        imwrite(argv[2], img_color);
     }
-    return 0;
 }

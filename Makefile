@@ -13,5 +13,6 @@ main.o:
 
 compile: clean dir main.o
 	$(CXX) $(CXXFLAGS) -o dist/test build/main.o $(LIBS)
+	cp *.jpg dist/
 
 .DEFAULT_GOAL := compile
