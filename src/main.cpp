@@ -9,6 +9,9 @@ int main(int argc, char *argv[])
 {
     std::cout << "parametro 1: " << argv[1] << std::endl;
     std::cout << "parametro 2: " << argv[2] << std::endl;
+    std::cout << "Integrantes de grupo: " << std::endl;
+    std::cout << "  *Felipe Perez Cares" << std::endl;
+    std::cout << "  *Javier Cisternas Cristi " << std::endl;
     std::string image_path = samples::findFile(argv[1]);
     if(image_path.empty())
     {
