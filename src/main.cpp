@@ -1,6 +1,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
+#include "opencv2/imgproc.hpp"
 #include <iostream>
 
 using namespace cv;
@@ -12,7 +13,7 @@ int main(int argc, char *argv[])
     std::cout << "Integrantes de grupo: " << std::endl;
     std::cout << "  *Felipe Perez Cares" << std::endl;
     std::cout << "  *Javier Cisternas Cristi " << std::endl;
-    std::string image_path = samples::findFile(argv[1]);
+    std::string image_path = samples::findFile(argv[1]); //buscar archivo a base de 1er parametro
     if(image_path.empty())
     {
         std::cout << "Could not read the image" << std::endl;
@@ -21,15 +22,17 @@ int main(int argc, char *argv[])
     else
     {
         Mat img_gris = imread(image_path, IMREAD_GRAYSCALE);
-        Mat vacio = Mat::zeros(img_gris.size(), CV_8UC1);
-        std::vector<Mat> canales;
-        canales.push_back(vacio);
-        canales.push_back(vacio);
-        canales.push_back(img_gris);
 
-        Mat img_color;
-        merge(canales, img_color);
+        Mat img_thres; //guardar imagen por threshold
+        threshold(img_gris, img_thres, 180, 255, THRESH_BINARY); //guarda threshold blanco y negro
 
-        imwrite(argv[2], img_color);
+        imwrite("threshold.jpg", img_thres);
+
+        for(int i=0; i<img_gris.rows; i++){
+            for(int j=0; j<img_gris.cols; j++){
+                std::cout << int(img_thres.at<uchar>(i,j)) << std::endl; //print valor de cada pixel de 0 a 255
+            }
+        }
+
     }
 }
