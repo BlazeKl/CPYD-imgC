@@ -12,7 +12,7 @@ main.o:
 	$(CXX) $(CXXFLAGS) -c src/main.cpp -o build/main.o
 
 compile: clean dir main.o
-	$(CXX) $(CXXFLAGS) -o dist/test build/main.o $(LIBS)
+	$(CXX) $(CXXFLAGS) -o dist/imgC build/main.o $(LIBS)
 	cp *.jpg dist/
 
 .DEFAULT_GOAL := compile

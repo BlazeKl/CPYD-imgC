@@ -34,3 +34,6 @@
 dist
 build
 *.jpg
+*.png
+*.bmp
+*.gif
